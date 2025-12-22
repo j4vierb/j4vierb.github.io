@@ -24,5 +24,22 @@ const { pageTitle } = Astro.props;
     <script>
     	import "../scripts/menu.js";
     </script> 
+		<script type="module">
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+			import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js";
+
+			const firebaseConfig = {
+				apiKey: "AIzaSyARRx4xwzS6ckoUTc3B4YWtzkTeczW-z_Q",
+				authDomain: "portfolio-bb322.firebaseapp.com",
+				projectId: "portfolio-bb322",
+				storageBucket: "portfolio-bb322.firebasestorage.app",
+				messagingSenderId: "107925040134",
+				appId: "1:107925040134:web:6d210f958a69941545a787",
+				measurementId: "G-Y8DMB323EL"
+			};
+
+			const app = initializeApp(firebaseConfig);
+			const analytics = getAnalytics(app);
+		</script>
 	</body>
 </html>
