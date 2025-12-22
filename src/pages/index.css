@@ -4,6 +4,12 @@ h2 {
   font-weight: 900;
 }
 
+h3 {
+  font-size: 1.5em;
+  margin: 0 0 15px 0;
+  font-weight: 700;
+}
+
 .welcome-text {
   display: flex;
   flex-direction: column;
@@ -51,7 +57,6 @@ h2 {
 
 .experience-item {
   position: relative;
-  margin-bottom: 30px;
   padding: 20px;
   
   border-radius: 10px;
@@ -107,6 +112,7 @@ h2 {
   border-radius: 12px;
   background: rgba(31, 41, 55, 0.3);
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .course-card:hover {
