@@ -1,7 +1,38 @@
 ---
+const { label } = Astro.props;
 ---
-<div class="hamburger">
+
+<style>
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-right: -0.5rem;
+  padding: 0.5rem;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--text);
+}
+
+@media screen and (min-width: 761px) {
+  .hamburger {
+    display: none;
+  }
+}
+</style>
+
+<button class="hamburger" type="button" aria-label={label} aria-controls="site-nav" aria-expanded="false">
   <span class="line"></span>
   <span class="line"></span>
   <span class="line"></span>
-</div>
+</button>

@@ -1,34 +1,66 @@
 ---
+import { home } from '../data/home.js';
 
+const { lang = 'es' } = Astro.props;
+const t = home[lang].nav;
+const base = import.meta.env.BASE_URL;
+const homeUrl = lang === 'en' ? `${base}en/` : base;
+const otherLang = lang === 'en' ? 'es' : 'en';
+const otherUrl = lang === 'en' ? base : `${base}en/`;
+const sections = ['work', 'projects', 'experience', 'contact'];
 ---
 
 <style>
-.nav-links a {
-  color: var(--blue);
-  text-decoration: none;
-  font-weight: 500;
-  position: relative;
-}
-
-.nav-links a::before {
-  content: "";
+.nav-links {
   position: absolute;
+  top: 100%;
+  right: 0;
   left: 0;
-  bottom: 0;
-  height: 4px;
-  background-color: #fff;
-  width: 100%;
-  transition: all .2s ease-in-out;
-  transform: scaleX(0);
+  display: none;
+  flex-direction: column;
+  padding: 0.5rem clamp(1rem, 4vw, 2.5rem) 1rem;
+  border-bottom: 1px solid var(--line);
+  background-color: var(--bg);
 }
 
-.nav-links a:hover::before {
-  transform: scaleX(1);
+.nav-links.expanded {
+  display: flex;
+}
+
+.nav-links a {
+  padding-block: 0.625rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.nav-links a:hover {
+  color: var(--text);
+}
+
+.nav-links .lang-switch {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+
+@media screen and (min-width: 761px) {
+  .nav-links,
+  .nav-links.expanded {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.75rem;
+    padding: 0;
+    border: 0;
+    background: none;
+  }
 }
 </style>
 
-<div class="nav-links">
-  <a href="#projects">Proyectos</a>
-  <a href="#about-me">Sobre mí</a>
-  <a href="#experience">Experiencia</a>
-</div>
+<nav class="nav-links" id="site-nav">
+  {sections.map((id) => <a href={`${homeUrl}#${id}`}>{t[id]}</a>)}
+  <a class="lang-switch" href={otherUrl} hreflang={otherLang} lang={otherLang} aria-label={t.switchLabel}>{t.switchText}</a>
+</nav>

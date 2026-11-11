@@ -1,0 +1,147 @@
+---
+import '../../styles/home.css';
+import { home, links } from '../../data/home.js';
+
+const { lang = 'es' } = Astro.props;
+const t = home[lang];
+const photo = `${import.meta.env.BASE_URL}javier-barrera.jpg`;
+---
+
+<div class="home">
+  <section class="hero container">
+    <div class="hero-copy">
+      <h1>{t.hero.name}</h1>
+      <p class="hero-role">{t.hero.role}</p>
+      <p class="hero-lead">{t.hero.lead}</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#work">{t.hero.primary}</a>
+        <a class="button" href={links.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+        <a class="button" href={links.github} target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <img class="hero-photo" src={photo} alt={t.hero.photoAlt} width="800" height="800" fetchpriority="high" />
+  </section>
+
+  <div class="container">
+    <dl class="metrics">
+      {t.metrics.map((metric) => (
+        <div class="metric">
+          <dt>{metric.value}</dt>
+          <dd>{metric.label}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+
+  <section class="section container" id="work">
+    <h2>{t.sections.work}</h2>
+    <div class="section-body">
+      {t.cases.map((item) => (
+        <article class="case">
+          <p class="mono-label">{item.context}</p>
+          <h3>{item.title}</h3>
+          <p class="case-role">{item.role}</p>
+
+          <div class="case-body">
+            <div class="case-summary">
+              <h4>{t.labels.challenge}</h4>
+              <p>{item.challenge}</p>
+              <h4 class="accent">{t.labels.result}</h4>
+              <p class="case-result">{item.result}</p>
+            </div>
+            <div>
+              <h4>{t.labels.did}</h4>
+              <ul class="case-list">
+                {item.did.map((line) => <li>{line}</li>)}
+              </ul>
+            </div>
+          </div>
+
+          <ul class="tags" aria-label={t.labels.stack}>
+            {item.tags.map((tag) => <li>{tag}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section container" id="projects">
+    <h2>{t.sections.projects}</h2>
+    <div class="section-body project-list">
+      {t.projects.map((project) => (
+        <article class="project">
+          <h3>{project.name}</h3>
+          <div>
+            <p>{project.summary}</p>
+            <ul class="tags" aria-label={t.labels.stack}>
+              {project.tags.map((tag) => <li>{tag}</li>)}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section container" id="experience">
+    <h2>{t.sections.experience}</h2>
+    <div class="section-body timeline">
+      {t.experience.map((job) => (
+        <article class="job">
+          <p class="mono-label">{job.date}</p>
+          <div>
+            <h3>{job.role}</h3>
+            <p class="job-org">{job.org}</p>
+            <p>{job.text}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section container" id="credentials">
+    <h2>{t.sections.credentials}</h2>
+    <div class="section-body credentials">
+      <div>
+        <h3 class="mono-label">{t.labels.certifications}</h3>
+        <ul class="plain-list">
+          {t.certifications.map((cert) => (
+            <li><span>{cert.name}</span><span class="muted-date">{cert.date}</span></li>
+          ))}
+        </ul>
+        <h3 class="mono-label">{t.labels.microcredentials}</h3>
+        <ul class="tags">
+          {t.microcredentials.map((item) => <li>{item}</li>)}
+        </ul>
+        <h3 class="mono-label">{t.labels.education}</h3>
+        <ul class="plain-list">
+          {t.education.map((item) => <li><span>{item}</span></li>)}
+        </ul>
+        <h3 class="mono-label">{t.labels.languages}</h3>
+        <p>{t.languages}</p>
+      </div>
+      <div>
+        <h3 class="mono-label">{t.labels.stack}</h3>
+        <dl class="stack">
+          {t.stack.map((row) => (
+            <div>
+              <dt>{row.group}</dt>
+              <dd>{row.items}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container" id="contact">
+    <h2>{t.sections.contact}</h2>
+    <div class="section-body">
+      <p>{t.contact.text}</p>
+      <div class="hero-actions contact-actions">
+        <a class="button button-primary" href={links.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+        <a class="button" href={links.github} target="_blank" rel="noopener">GitHub</a>
+        {links.email && <a class="button" href={`mailto:${links.email}`}>{links.email}</a>}
+      </div>
+    </div>
+  </section>
+</div>

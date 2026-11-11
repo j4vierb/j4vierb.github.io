@@ -3,27 +3,50 @@ import '../styles/global.css';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 
-const { pageTitle } = Astro.props;
-
+const { pageTitle, lang = 'es', description, home = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
+const imageUrl = new URL(`${base}javier-barrera.jpg`, Astro.site);
+const esUrl = new URL(base, Astro.site);
+const enUrl = new URL(`${base}en/`, Astro.site);
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="ICON.ico" />
-		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+		{description && <meta name="description" content={description} />}
+		<link rel="canonical" href={pageUrl} />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={pageTitle} />
+		{description && <meta property="og:description" content={description} />}
+		<meta property="og:url" content={pageUrl} />
+		<meta property="og:image" content={imageUrl} />
+		{home && <link rel="alternate" hreflang="es" href={esUrl} />}
+		{home && <link rel="alternate" hreflang="en" href={enUrl} />}
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 	</head>
 	<body>
-		<Header pageTitle={pageTitle}/>
-    	<slot />
-    <Footer/>
+		<Header lang={lang} />
+		{home ? (
+			<main><slot /></main>
+		) : (
+			<main class="prose">
+				<h1 class="page-title">{pageTitle}</h1>
+				<slot />
+			</main>
+		)}
+		<Footer />
 
-    <script>
-    	import "../scripts/menu.js";
-    </script> 
+		<script>
+			import "../scripts/menu.js";
+		</script>
 		<script type="module">
 			import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
 			import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js";

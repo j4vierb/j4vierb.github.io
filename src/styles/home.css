@@ -1,0 +1,394 @@
+:where(.home) :where(h1, h2, h3, h4, p, ul, ol, dl, dd, figure) {
+  margin: 0;
+}
+
+:where(.home) :where(ul, ol) {
+  padding: 0;
+  list-style: none;
+}
+
+.mono-label,
+.home h4,
+.tags,
+.muted-date {
+  font-family: var(--font-mono);
+}
+
+.mono-label,
+.home h4 {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Hero */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 20rem;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+  padding-block: clamp(3.5rem, 9vw, 7rem) clamp(3rem, 6vw, 4.5rem);
+}
+
+.hero h1 {
+  font-size: clamp(2.75rem, 6.4vw, 5rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.hero-role {
+  margin-top: 0.5rem;
+  color: var(--accent);
+  font-size: clamp(1.375rem, 2.6vw, 2rem);
+  line-height: 1.25;
+}
+
+.hero-lead {
+  max-width: 38rem;
+  margin-top: 1.5rem;
+  color: var(--muted);
+  font-size: 1.1875rem;
+  line-height: 1.55;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+
+.hero-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 1.25rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.button:hover {
+  border-color: var(--muted);
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+.button-primary {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  color: var(--bg);
+}
+
+.button-primary:hover {
+  border-color: var(--accent-hover);
+  background-color: var(--accent-hover);
+  color: var(--bg);
+}
+
+/* Metrics */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-block: 1px solid var(--line);
+}
+
+.metric {
+  padding: 1.75rem 1.5rem;
+  border-left: 1px solid var(--line);
+}
+
+.metric:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.metric dt {
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.metric dd {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+/* Sections */
+.section {
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  gap: 3rem;
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
+  scroll-margin-top: 3rem;
+}
+
+.section + .section {
+  border-top: 1px solid var(--line);
+}
+
+.section > h2 {
+  position: sticky;
+  top: 6rem;
+  align-self: start;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* Case studies */
+.case + .case {
+  margin-top: 4rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--line);
+}
+
+.case h3 {
+  margin-top: 0.625rem;
+  font-size: clamp(1.625rem, 3vw, 2.125rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.case-role {
+  margin-top: 0.5rem;
+  color: var(--muted);
+}
+
+.case-body {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.home h4 {
+  margin-bottom: 0.5rem;
+}
+
+.home h4.accent {
+  margin-top: 1.75rem;
+  color: var(--accent);
+}
+
+.case-result {
+  font-weight: 500;
+}
+
+.case-list li {
+  padding-block: 0.75rem;
+  border-top: 1px solid var(--line);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.case-list li:first-child {
+  padding-top: 0.25rem;
+  border-top: 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+}
+
+.tags li {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--muted);
+}
+
+/* Projects */
+.project {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  gap: 1.5rem;
+  padding-block: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.project:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.project h3 {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.project .tags {
+  margin-top: 0.875rem;
+}
+
+/* Experience */
+.job {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: 1.5rem;
+  padding-block: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.job:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.job .mono-label {
+  line-height: 1.9;
+}
+
+.job h3 {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.job-org {
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+  font-size: 0.9375rem;
+}
+
+/* Credentials */
+.credentials {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3rem;
+}
+
+.credentials h3.mono-label {
+  margin-bottom: 0.625rem;
+}
+
+.credentials h3.mono-label:not(:first-child) {
+  margin-top: 2rem;
+}
+
+.credentials .tags {
+  margin-top: 0;
+}
+
+.plain-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.5rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.plain-list li:first-child {
+  border-top: 0;
+}
+
+.muted-date {
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+.stack > div {
+  padding-block: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.stack > div:first-child {
+  padding-top: 0.5rem;
+  border-top: 0;
+}
+
+.stack dt {
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.stack dd {
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+/* Contact */
+.contact-actions {
+  margin-top: 1.25rem;
+}
+
+@media screen and (max-width: 960px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) 14rem;
+    gap: 2.5rem;
+  }
+
+  .section {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  .section > h2 {
+    position: static;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 2.5rem;
+  }
+
+  .hero-photo {
+    grid-row: 1;
+    width: 9rem;
+  }
+
+  .metrics {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .metric,
+  .metric:first-child {
+    padding: 1.25rem 0;
+    border-left: 0;
+  }
+
+  .metric + .metric {
+    border-top: 1px solid var(--line);
+  }
+
+  .metric dt {
+    font-size: 2rem;
+  }
+
+  .case-body,
+  .credentials,
+  .project,
+  .job {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .project,
+  .job {
+    gap: 0.5rem;
+  }
+}

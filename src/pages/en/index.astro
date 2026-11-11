@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Home from '../../components/home/Home.astro';
+import { home } from '../../data/home.js';
+
+const { title, description } = home.en.meta;
+---
+
+<BaseLayout pageTitle={title} description={description} lang="en" home>
+  <Home lang="en" />
+</BaseLayout>
