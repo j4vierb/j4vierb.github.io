@@ -1,11 +1,28 @@
-# Portfolio
+# Javier Barrera
+
+**AI Engineer.** Personal portfolio with case studies, projects and credentials, in Spanish and English.
+
+**[j4vierb.github.io](https://j4vierb.github.io)**
 
 [![Deploy to GitHub Pages](https://github.com/j4vierb/portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/j4vierb/portfolio/actions/workflows/deploy.yml)
 
-## Introduction
+## Stack
 
-This Astro project will be used as my personal portfolio. Here you will find some information about me, my interests, what i'm doing, and personal projects. In particular, I want to write some blog entries about topics related to competitive programming problems, data structures, and machine learning to track what I'm learning.
+Astro · CSS · Canvas API · GitHub Pages
 
-## Status
+## Run locally
 
-- [ ] DISCLAIMER: The page isn't working. The routes that are defined locally are not working :(. 
+```bash
+npm install
+npm run dev
+```
+
+Open <http://localhost:4321>.
+
+## Update the content
+
+All the home page content lives in [`src/data/home.js`](src/data/home.js). To add a case study, add an entry to `cases` in both `es` and `en`. The first entry is shown as the featured case.
+
+## Deploy
+
+Run **Deploy to GitHub Pages** manually from the Actions tab.
