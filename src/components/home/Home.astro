@@ -11,6 +11,8 @@ const [featuredCase, ...otherCases] = t.cases;
 ---
 
 <div class="home">
+  <div class="waves-wrap">
+  <canvas class="dot-waves" data-fade="copy" aria-hidden="true"></canvas>
   <section class="hero container">
     <div class="hero-copy">
       <h1>{t.hero.name}</h1>
@@ -24,6 +26,7 @@ const [featuredCase, ...otherCases] = t.cases;
     </div>
     <img class="hero-photo" src={photo} alt={t.hero.photoAlt} width="800" height="800" fetchpriority="high" />
   </section>
+  </div>
 
   <div class="container">
     <dl class="metrics">
@@ -87,13 +90,13 @@ const [featuredCase, ...otherCases] = t.cases;
 
   <section class="section container" id="credentials">
     <h2>{t.sections.credentials}</h2>
-    <div class="section-body credentials reveal">
+    <div class="section-body credentials">
       <h3 class="mono-label">{t.labels.certifications}</h3>
       <ul class="badges">
         {badges.map((badge) => (
           <li>
             <a class="badge" href={badge.href} target="_blank" rel="noopener" title={badge.name}>
-              <img src={`${base}badges/${badge.file}.webp`} alt={badge.name} width="240" height="240" loading="lazy" />
+              <img src={`${base}badges/${badge.file}.webp`} alt={badge.name} width="240" height="240" decoding="sync" />
             </a>
           </li>
         ))}
@@ -124,6 +127,8 @@ const [featuredCase, ...otherCases] = t.cases;
     </div>
   </section>
 
+  <div class="waves-wrap contact-wrap">
+  <canvas class="dot-waves" aria-hidden="true"></canvas>
   <section class="section container" id="contact">
     <h2>{t.sections.contact}</h2>
     <div class="section-body contact-row reveal">
@@ -135,8 +140,10 @@ const [featuredCase, ...otherCases] = t.cases;
       </div>
     </div>
   </section>
+  </div>
 </div>
 
 <script>
   import '../../scripts/reveal.js';
+  import '../../scripts/waves.js';
 </script>

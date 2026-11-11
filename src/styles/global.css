@@ -16,6 +16,9 @@
 }
 
 html {
+  color-scheme: dark;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) var(--bg);
   background-color: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
