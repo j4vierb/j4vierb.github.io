@@ -98,16 +98,19 @@ const [featuredCase, ...otherCases] = t.cases;
           </li>
         ))}
       </ul>
-      <div class="credentials-grid">
-      <div>
-        <h3 class="mono-label">{t.labels.education}</h3>
-        <ul class="plain-list">
-          {t.education.map((item) => <li><span>{item}</span></li>)}
-        </ul>
-        <h3 class="mono-label">{t.labels.languages}</h3>
-        <p>{t.languages}</p>
+      <div class="credentials-meta">
+        <div>
+          <h3 class="mono-label">{t.labels.education}</h3>
+          <ul class="plain-list">
+            {t.education.map((item) => <li><span>{item}</span></li>)}
+          </ul>
+        </div>
+        <div>
+          <h3 class="mono-label">{t.labels.languages}</h3>
+          <p>{t.languages}</p>
+        </div>
       </div>
-      <div>
+      <div class="credentials-stack">
         <h3 class="mono-label">{t.labels.stack}</h3>
         <dl class="stack">
           {t.stack.map((row) => (
@@ -118,13 +121,12 @@ const [featuredCase, ...otherCases] = t.cases;
           ))}
         </dl>
       </div>
-      </div>
     </div>
   </section>
 
   <section class="section container" id="contact">
     <h2>{t.sections.contact}</h2>
-    <div class="section-body reveal">
+    <div class="section-body contact-row reveal">
       <p>{t.contact.text}</p>
       <div class="hero-actions contact-actions">
         <a class="button button-primary" href={links.linkedin} target="_blank" rel="noopener">LinkedIn</a>

@@ -370,11 +370,21 @@
   transform: translateY(-4px);
 }
 
-.credentials-grid {
+.credentials-meta {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 3rem;
   margin-top: 3rem;
+}
+
+.credentials-meta p {
+  padding-block: 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.credentials-stack {
+  margin-top: 2.5rem;
 }
 
 .credentials h3.mono-label {
@@ -403,14 +413,11 @@
   border-top: 0;
 }
 
-.stack > div {
-  padding-block: 0.75rem;
-  border-top: 1px solid var(--line);
-}
-
-.stack > div:first-child {
+.stack {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem 2.5rem;
   padding-top: 0.5rem;
-  border-top: 0;
 }
 
 .stack dt {
@@ -424,8 +431,20 @@
 }
 
 /* Contact */
+#contact > h2 {
+  align-self: center;
+}
+
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+}
+
 .contact-actions {
-  margin-top: 1.25rem;
+  margin-top: 0;
 }
 
 @media screen and (max-width: 960px) {
@@ -492,10 +511,24 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .credentials-grid,
+  .credentials-meta,
   .project,
   .job {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .credentials-meta {
+    gap: 2rem;
+  }
+
+  .stack {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .contact-row {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .project,

@@ -1,6 +1,4 @@
 ---
-import { links } from '../data/home.js';
-
 const year = new Date().getFullYear();
 ---
 
@@ -12,39 +10,16 @@ footer {
 }
 
 .footer-inner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem 2rem;
   padding-block: 1.5rem;
 }
 
 p {
   margin: 0;
 }
-
-nav {
-  display: flex;
-  gap: 1.25rem;
-}
-
-a {
-  color: var(--muted);
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--text);
-}
 </style>
 
 <footer>
   <div class="container footer-inner">
     <p>Javier Barrera · {year}</p>
-    <nav aria-label="Social">
-      <a href={links.linkedin} target="_blank" rel="noopener">LinkedIn</a>
-      <a href={links.github} target="_blank" rel="noopener">GitHub</a>
-    </nav>
   </div>
 </footer>
