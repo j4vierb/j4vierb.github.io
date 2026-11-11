@@ -5,12 +5,27 @@ export const links = {
   email: '',
 };
 
+const credly = (id) => `https://www.credly.com/badges/${id}/public_url`;
+const snowflake = (id) => `https://achieve.snowflake.com/${id}`;
+
+export const badges = [
+  { file: 'saa', name: 'AWS Certified Solutions Architect – Associate', href: credly('5b1c60a3-1dce-45ce-8b89-4314f913291d') },
+  { file: 'aip', name: 'AWS Certified AI Practitioner', href: credly('05e8aa0e-6d77-4eaa-b4b5-e43729a6f2d4') },
+  { file: 'ccp', name: 'AWS Certified Cloud Practitioner', href: credly('1990f662-68d0-401f-a2a3-4edba67d5a2f') },
+  { file: 'snowpro', name: 'Snowflake SnowPro Core', href: snowflake('e73ed66a-64b2-44a9-aeed-e8a14ca1c17c') },
+  { file: 'snowde', name: 'Snowflake Hands-On Essentials: Data Engineering', href: snowflake('28e36460-8914-46c9-aa0c-996f27421109') },
+  { file: 'claude', name: 'Claude Partner Badge – Claude Code', href: credly('c6cea31d-3cd1-48fd-9293-c7da5a75c4a9') },
+  { file: 'dataviz', name: 'AWS Data Visualization Demonstrated', href: credly('d7c542a7-88d4-43bb-a973-0ea3dcb86320') },
+  { file: 'serverless', name: 'AWS Serverless Demonstrated', href: credly('b8848b53-3864-4f5c-b480-251384d6c4b3') },
+  { file: 'lakehouse', name: 'AWS Data Lakehouse Demonstrated', href: credly('50506aa9-88fa-4fdc-951c-13ec8d2847c1') },
+];
+
 export const home = {
   es: {
     meta: {
       title: 'Javier Barrera · AI Engineer',
       description:
-        'AI Engineer. Construyo sistemas con LLMs y agentes de IA sobre AWS.',
+        'AI Engineer. Construyo sistemas con LLMs y agentes de IA en la nube.',
     },
     nav: {
       work: 'Casos',
@@ -24,7 +39,7 @@ export const home = {
     hero: {
       name: 'Javier Barrera',
       role: 'AI Engineer',
-      lead: 'Construyo sistemas con LLMs y agentes de IA sobre AWS. En Blend360 he trabajado en un motor de auditoría médica y en proyectos de datos e IA con clientes.',
+      lead: 'Construyo sistemas con LLMs y agentes de IA en la nube, y programo a diario orquestando agentes como Claude Code, Codex y Antigravity. Trabajo en Blend360, en proyectos de datos e IA con clientes.',
       primary: 'Ver casos',
       photoAlt: 'Retrato de Javier Barrera',
     },
@@ -38,8 +53,7 @@ export const home = {
       did: 'Qué hice',
       result: 'Resultado',
       role: 'Rol',
-      certifications: 'Certificaciones',
-      microcredentials: 'Microcredenciales AWS',
+      certifications: 'Certificaciones e insignias',
       education: 'Formación',
       languages: 'Idiomas',
       stack: 'Stack',
@@ -55,6 +69,7 @@ export const home = {
       {
         context: 'Entidad pública de salud · Colombia',
         title: 'Motor de auditoría médica con IA',
+        highlight: { value: '85%', label: 'F1 medido contra ground truth' },
         role: 'Arquitecto y uno de los constructores principales, junto con el equipo',
         challenge:
           'Cada reclamación médica debe contrastarse con la historia clínica, las tarifas y la norma colombiana. El motor automatiza esa revisión con decisiones que se pueden sustentar.',
@@ -73,6 +88,7 @@ export const home = {
       {
         context: 'Blend360 · Interno',
         title: 'Medición de ingeniería y adopción de IA',
+        highlight: { value: '+600', label: 'reportes entregados' },
         role: 'Ingeniero de automatización',
         challenge:
           'La gerencia necesitaba ver qué trabajo técnico aporta a cada objetivo de negocio y cómo se adopta la IA en la empresa, con cifras que se puedan auditar.',
@@ -89,6 +105,7 @@ export const home = {
       {
         context: 'Cliente privado · Descubrimiento con IA',
         title: 'Actas de junta directiva con IA',
+        highlight: { value: '~60%', label: 'de ahorro estimado por acta' },
         role: 'Ingeniero de datos e IA y punto de contacto técnico',
         challenge:
           'Elaborar cada acta de junta directiva tomaba varios días y la operación del cliente estaba dispersa en correos y archivos.',
@@ -124,7 +141,7 @@ export const home = {
         date: 'Feb 2026 – Actualidad',
         role: 'Data Engineer, enfocado en LLMs y agentes',
         org: 'Blend360',
-        text: 'Construcción de sistemas de IA en producción sobre AWS, automatización interna y trabajo directo con clientes.',
+        text: 'Construcción de sistemas de IA en producción sobre AWS, automatización interna y trabajo directo con clientes. Acompaño a mi equipo en la adopción de herramientas de desarrollo con agentes.',
       },
       {
         date: 'Ago 2024 – May 2025',
@@ -141,13 +158,6 @@ export const home = {
       { group: 'Datos', items: 'PostgreSQL, Snowflake, QuickSight, PySpark' },
       { group: 'Calidad', items: 'GitHub Actions, pruebas unitarias y de integración' },
     ],
-    certifications: [
-      { name: 'AWS Certified Solutions Architect – Associate', date: '2026' },
-      { name: 'AWS Certified AI Practitioner', date: '2026' },
-      { name: 'AWS Certified Cloud Practitioner', date: '2026' },
-      { name: 'Snowflake SnowPro Core', date: '2026' },
-    ],
-    microcredentials: ['Data Visualization', 'Serverless', 'Data Lakehouse'],
     education: [
       'Ingeniería de Sistemas y Computación, Universidad de los Andes',
     ],
@@ -161,7 +171,7 @@ export const home = {
     meta: {
       title: 'Javier Barrera · AI Engineer',
       description:
-        'AI Engineer. I build systems with LLMs and AI agents on AWS.',
+        'AI Engineer. I build systems with LLMs and AI agents in the cloud.',
     },
     nav: {
       work: 'Case studies',
@@ -175,7 +185,7 @@ export const home = {
     hero: {
       name: 'Javier Barrera',
       role: 'AI Engineer',
-      lead: 'I build systems with LLMs and AI agents on AWS. At Blend360 I have worked on a medical audit engine and on data and AI projects with clients.',
+      lead: 'I build systems with LLMs and AI agents in the cloud, and I code every day by orchestrating agents such as Claude Code, Codex and Antigravity. I work at Blend360 on data and AI projects with clients.',
       primary: 'See case studies',
       photoAlt: 'Portrait of Javier Barrera',
     },
@@ -189,8 +199,7 @@ export const home = {
       did: 'What I did',
       result: 'Result',
       role: 'Role',
-      certifications: 'Certifications',
-      microcredentials: 'AWS microcredentials',
+      certifications: 'Certifications and badges',
       education: 'Education',
       languages: 'Languages',
       stack: 'Stack',
@@ -206,6 +215,7 @@ export const home = {
       {
         context: 'Public health agency · Colombia',
         title: 'AI-powered medical audit engine',
+        highlight: { value: '85%', label: 'F1 measured against ground truth' },
         role: 'Architect and one of the main builders, together with the team',
         challenge:
           'Every medical claim has to be checked against the clinical record, the rates and Colombian regulation. The engine automates that review with decisions that can be backed up.',
@@ -224,6 +234,7 @@ export const home = {
       {
         context: 'Blend360 · Internal',
         title: 'Engineering and AI adoption measurement',
+        highlight: { value: '600+', label: 'reports delivered' },
         role: 'Automation engineer',
         challenge:
           'Leadership needed to see which technical work contributes to each business goal and how AI is being adopted across the company, with figures that can be audited.',
@@ -240,6 +251,7 @@ export const home = {
       {
         context: 'Private client · AI discovery',
         title: 'AI-generated board minutes',
+        highlight: { value: '~60%', label: 'estimated savings per set of minutes' },
         role: 'Data and AI engineer and technical point of contact',
         challenge:
           'Writing each set of board minutes took several days, and the client’s operational knowledge was scattered across emails and files.',
@@ -275,7 +287,7 @@ export const home = {
         date: 'Feb 2026 – Present',
         role: 'Data Engineer, focused on LLMs and agents',
         org: 'Blend360',
-        text: 'Building production AI systems on AWS, internal automation and working directly with clients.',
+        text: 'Building production AI systems on AWS, internal automation and working directly with clients. I help my team adopt agent-based development tools.',
       },
       {
         date: 'Aug 2024 – May 2025',
@@ -292,13 +304,6 @@ export const home = {
       { group: 'Data', items: 'PostgreSQL, Snowflake, QuickSight, PySpark' },
       { group: 'Quality', items: 'GitHub Actions, unit and integration testing' },
     ],
-    certifications: [
-      { name: 'AWS Certified Solutions Architect – Associate', date: '2026' },
-      { name: 'AWS Certified AI Practitioner', date: '2026' },
-      { name: 'AWS Certified Cloud Practitioner', date: '2026' },
-      { name: 'Snowflake SnowPro Core', date: '2026' },
-    ],
-    microcredentials: ['Data Visualization', 'Serverless', 'Data Lakehouse'],
     education: [
       'B.S. in Systems and Computing Engineering, Universidad de los Andes',
     ],

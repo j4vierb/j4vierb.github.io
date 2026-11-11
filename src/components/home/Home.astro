@@ -1,10 +1,13 @@
 ---
 import '../../styles/home.css';
-import { home, links } from '../../data/home.js';
+import CaseStudy from './CaseStudy.astro';
+import { badges, home, links } from '../../data/home.js';
 
 const { lang = 'es' } = Astro.props;
 const t = home[lang];
-const photo = `${import.meta.env.BASE_URL}javier-barrera.jpg`;
+const base = import.meta.env.BASE_URL;
+const photo = `${base}javier-barrera.jpg`;
+const [featuredCase, ...otherCases] = t.cases;
 ---
 
 <div class="home">
@@ -33,35 +36,19 @@ const photo = `${import.meta.env.BASE_URL}javier-barrera.jpg`;
     </dl>
   </div>
 
-  <section class="section container" id="work">
-    <h2>{t.sections.work}</h2>
-    <div class="section-body">
-      {t.cases.map((item) => (
-        <article class="case">
-          <p class="mono-label">{item.context}</p>
-          <h3>{item.title}</h3>
-          <p class="case-role">{item.role}</p>
-
-          <div class="case-body">
-            <div class="case-summary">
-              <h4>{t.labels.challenge}</h4>
-              <p>{item.challenge}</p>
-              <h4 class="accent">{t.labels.result}</h4>
-              <p class="case-result">{item.result}</p>
-            </div>
-            <div>
-              <h4>{t.labels.did}</h4>
-              <ul class="case-list">
-                {item.did.map((line) => <li>{line}</li>)}
-              </ul>
-            </div>
-          </div>
-
-          <ul class="tags" aria-label={t.labels.stack}>
-            {item.tags.map((tag) => <li>{tag}</li>)}
-          </ul>
-        </article>
-      ))}
+  <section class="work" id="work">
+    <div class="container">
+      <h2 class="work-title">{t.sections.work}</h2>
+    </div>
+    <div class="featured-band">
+      <div class="container">
+        <CaseStudy item={featuredCase} labels={t.labels} featured />
+      </div>
+    </div>
+    <div class="container">
+      <div class="case-stack">
+        {otherCases.map((item) => <CaseStudy item={item} labels={t.labels} />)}
+      </div>
     </div>
   </section>
 
@@ -69,7 +56,7 @@ const photo = `${import.meta.env.BASE_URL}javier-barrera.jpg`;
     <h2>{t.sections.projects}</h2>
     <div class="section-body project-list">
       {t.projects.map((project) => (
-        <article class="project">
+        <article class="project reveal">
           <h3>{project.name}</h3>
           <div>
             <p>{project.summary}</p>
@@ -86,7 +73,7 @@ const photo = `${import.meta.env.BASE_URL}javier-barrera.jpg`;
     <h2>{t.sections.experience}</h2>
     <div class="section-body timeline">
       {t.experience.map((job) => (
-        <article class="job">
+        <article class="job reveal">
           <p class="mono-label">{job.date}</p>
           <div>
             <h3>{job.role}</h3>
@@ -100,18 +87,19 @@ const photo = `${import.meta.env.BASE_URL}javier-barrera.jpg`;
 
   <section class="section container" id="credentials">
     <h2>{t.sections.credentials}</h2>
-    <div class="section-body credentials">
+    <div class="section-body credentials reveal">
+      <h3 class="mono-label">{t.labels.certifications}</h3>
+      <ul class="badges">
+        {badges.map((badge) => (
+          <li>
+            <a class="badge" href={badge.href} target="_blank" rel="noopener" title={badge.name}>
+              <img src={`${base}badges/${badge.file}.webp`} alt={badge.name} width="240" height="240" loading="lazy" />
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="credentials-grid">
       <div>
-        <h3 class="mono-label">{t.labels.certifications}</h3>
-        <ul class="plain-list">
-          {t.certifications.map((cert) => (
-            <li><span>{cert.name}</span><span class="muted-date">{cert.date}</span></li>
-          ))}
-        </ul>
-        <h3 class="mono-label">{t.labels.microcredentials}</h3>
-        <ul class="tags">
-          {t.microcredentials.map((item) => <li>{item}</li>)}
-        </ul>
         <h3 class="mono-label">{t.labels.education}</h3>
         <ul class="plain-list">
           {t.education.map((item) => <li><span>{item}</span></li>)}
@@ -130,12 +118,13 @@ const photo = `${import.meta.env.BASE_URL}javier-barrera.jpg`;
           ))}
         </dl>
       </div>
+      </div>
     </div>
   </section>
 
   <section class="section container" id="contact">
     <h2>{t.sections.contact}</h2>
-    <div class="section-body">
+    <div class="section-body reveal">
       <p>{t.contact.text}</p>
       <div class="hero-actions contact-actions">
         <a class="button button-primary" href={links.linkedin} target="_blank" rel="noopener">LinkedIn</a>
@@ -145,3 +134,7 @@ const photo = `${import.meta.env.BASE_URL}javier-barrera.jpg`;
     </div>
   </section>
 </div>
+
+<script>
+  import '../../scripts/reveal.js';
+</script>

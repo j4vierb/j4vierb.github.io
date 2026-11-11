@@ -9,9 +9,18 @@
 
 .mono-label,
 .home h4,
-.tags,
-.muted-date {
+.tags {
   font-family: var(--font-mono);
+}
+
+/* Scroll reveal */
+.reveal {
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.reveal-pending {
+  opacity: 0;
+  transform: translateY(14px);
 }
 
 .mono-label,
@@ -141,7 +150,8 @@
   scroll-margin-top: 3rem;
 }
 
-.section + .section {
+.section + .section,
+.work + .section {
   border-top: 1px solid var(--line);
 }
 
@@ -154,10 +164,38 @@
 }
 
 /* Case studies */
-.case + .case {
-  margin-top: 4rem;
-  padding-top: 4rem;
+.work {
+  padding-top: clamp(3.5rem, 7vw, 5.5rem);
+  scroll-margin-top: 3rem;
+}
+
+.work-title {
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.featured-band {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  border-block: 1px solid var(--line);
+  background-color: var(--surface);
+}
+
+.case-stack {
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+}
+
+.case-stack .case + .case {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding-top: clamp(3rem, 6vw, 4.5rem);
   border-top: 1px solid var(--line);
+}
+
+.case-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2rem;
+  align-items: start;
 }
 
 .case h3 {
@@ -168,16 +206,52 @@
   letter-spacing: -0.015em;
 }
 
+.case-featured h3 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
 .case-role {
   margin-top: 0.5rem;
   color: var(--muted);
 }
 
+.case-figure {
+  max-width: 16rem;
+  text-align: right;
+}
+
+.case-figure strong {
+  display: block;
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.case-figure span {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.35;
+}
+
+.case-featured .case-figure strong {
+  color: var(--accent);
+  font-size: clamp(4.5rem, 9vw, 7.5rem);
+}
+
 .case-body {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2.5rem;
-  margin-top: 2rem;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 4rem;
+  margin-top: 2.5rem;
+}
+
+.case-featured .case-body {
+  margin-top: 3rem;
 }
 
 .home h4 {
@@ -273,10 +347,34 @@
 }
 
 /* Credentials */
-.credentials {
+.badges {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.5rem;
+  max-width: 42rem;
+}
+
+.badge {
+  display: block;
+  border-radius: 8px;
+}
+
+.badge img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.2s ease;
+}
+
+.badge:hover img {
+  transform: translateY(-4px);
+}
+
+.credentials-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 3rem;
+  margin-top: 3rem;
 }
 
 .credentials h3.mono-label {
@@ -303,11 +401,6 @@
 
 .plain-list li:first-child {
   border-top: 0;
-}
-
-.muted-date {
-  color: var(--muted);
-  font-size: 0.8125rem;
 }
 
 .stack > div {
@@ -349,6 +442,11 @@
   .section > h2 {
     position: static;
   }
+
+  .case-body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
 }
 
 @media screen and (max-width: 720px) {
@@ -380,8 +478,21 @@
     font-size: 2rem;
   }
 
-  .case-body,
-  .credentials,
+  .case-head {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .case-figure {
+    max-width: none;
+    text-align: left;
+  }
+
+  .badges {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .credentials-grid,
   .project,
   .job {
     grid-template-columns: minmax(0, 1fr);
